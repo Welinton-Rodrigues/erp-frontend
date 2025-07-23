@@ -1,0 +1,15 @@
+/* src/index.css */
+
+/*
+  Remove as margens e preenchimentos padrão do navegador e garante
+  que os elementos ocupem o espaço que a gente define, sem surpresas.
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Podemos definir a fonte padrão aqui */
+}
