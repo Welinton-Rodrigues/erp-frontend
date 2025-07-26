@@ -1,18 +1,23 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
+import ProdutosPage from './pages/ProdutosPage';
+import MainLayout from './components/MainLayout'; // 1. Importamos o Layout
 
 function App() {
   return (
     <Routes>
-      {/* Se o usuário tentar acessar a raiz, redireciona para /login */}
-      <Route path="/" element={<Navigate to="/login" />} />
-      
-      {/* Define que a URL /login renderiza o componente LoginPage */}
+      {/* Rotas Públicas */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<Navigate to="/login" />} />
 
-      {/* Define que a URL /dashboard renderiza o componente DashboardPage */}
-      <Route path="/dashboard" element={<DashboardPage />} />
+      {/* Rotas Privadas que usam o MainLayout */}
+      <Route element={<MainLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/produtos" element={<ProdutosPage />} />
+        {/* Adicione aqui as futuras rotas de Clientes, Fornecedores, etc. */}
+        {/* <Route path="/clientes" element={<ClientesPage />} /> */}
+      </Route>
     </Routes>
   )
 }

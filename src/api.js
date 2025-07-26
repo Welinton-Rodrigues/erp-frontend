@@ -1,24 +1,48 @@
 import axios from 'axios';
 
-// Cria uma instância do axios com configurações pré-definidas
 const api = axios.create({
-    baseURL: 'http://localhost:8080/api' // URL base da nossa API
+    baseURL: 'http://localhost:8080/api'
 });
 
-// Isso é um "interceptor". É uma função que será executada ANTES de cada requisição.
+// --- INTERCEPTOR DE REQUISIÇÃO (O que já tínhamos) ---
+// Adiciona o token em todas as chamadas
 api.interceptors.request.use(
     (config) => {
-        // Pega o token do localStorage
         const token = localStorage.getItem('authToken');
-        
-        // Se o token existir, adiciona o cabeçalho de autorização
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
-        
-        return config; // Retorna a configuração modificada para o axios continuar a requisição
+        return config;
     },
     (error) => {
+        return Promise.reject(error);
+    }
+);
+
+
+// --- NOVO INTERCEPTOR DE RESPOSTA (O "Guarda-Costas") ---
+// Verifica as respostas da API
+api.interceptors.response.use(
+    // Se a resposta for um sucesso (status 2xx), apenas a retorna
+    (response) => {
+        return response;
+    },
+    // Se a resposta for um erro...
+    (error) => {
+        // Verifica se o erro é de "Não Autorizado" (401) ou "Proibido" (403)
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+            
+            console.log("Sessão expirada ou inválida. Limpando token e redirecionando para o login.");
+
+            // Remove o token inválido do armazenamento
+            localStorage.removeItem('authToken');
+            
+            // Redireciona o usuário para a página de login
+            // (Isso força um recarregamento completo, limpando qualquer estado antigo)
+            window.location.href = '/login';
+        }
+
+        // Para qualquer outro erro, apenas o repassa
         return Promise.reject(error);
     }
 );

@@ -18,6 +18,9 @@ function DashboardPage() {
             } catch (err) {
                 setError('Não foi possível carregar os clientes.');
                 console.error("Erro ao buscar clientes:", err);
+                const errorMessage = err.response?.data || 'Ocorreu um erro ao buscar os dados.';
+            console.error("Erro ao buscar clientes:", errorMessage);
+            setError(errorMessage);
             }
         };
 

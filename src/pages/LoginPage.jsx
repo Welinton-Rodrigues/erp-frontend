@@ -22,8 +22,7 @@ function LoginPage() {
             const token = response.data.token;
             localStorage.setItem('authToken', token);
             
-            // 3. APÓS O SUCESSO, REDIRECIONAMOS!
-            // Em vez do alert, agora navegamos para o dashboard.
+            
             navigate('/dashboard');
 
         } catch (err) {
