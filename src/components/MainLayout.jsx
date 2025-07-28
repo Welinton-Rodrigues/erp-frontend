@@ -7,7 +7,7 @@ function MainLayout(){
         <div className="main-layout">
             <aside className="sidebar">
                 <div className="sidebar-header">
-                    <div className="logo">MEU ERP</div>
+                    <div className="logo">Erpcore</div>
                 </div>
                 <nav className="sidebar-nav">
                 <NavLink to = "/dashboard" className= "nav-link">Relatórios</NavLink>
@@ -23,5 +23,5 @@ function MainLayout(){
             </main>
         </div>
     );
-}// Importando o CSS para estilização
+}
 export default MainLayout;

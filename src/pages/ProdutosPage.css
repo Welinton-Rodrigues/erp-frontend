@@ -1,0 +1,108 @@
+/* Estilos gerais para containers de página */
+.page-container {
+    padding: 20px 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.add-button {
+    background-color: #26a69a; 
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #00897b;
+}
+
+/* Estilos da Tabela */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden; 
+}
+
+.data-table th,
+.data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.data-table thead th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f5f8;
+}
+
+/* Estilo para o Status */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-ativo {
+    background-color: #e0f2f1; 
+    color: #00796b; 
+}
+
+.status-inativo {
+    background-color: #ffebee;
+    color: #c62828; 
+}
+
+.actions-cell {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    border: 1px solid #bdc3c7;
+    background-color: transparent;
+    color: #34495e;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-button.edit:hover {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.action-button.delete:hover {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
